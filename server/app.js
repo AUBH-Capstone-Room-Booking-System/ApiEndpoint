@@ -8,7 +8,9 @@ const sensorApiUrl = process.env.SENSOR_API_URL;
 
 // Middleware to parse incoming JSON data
 app.use(express.json());
-
+app.get('/', async(req, res) => {
+    res.send("hello");
+})
 // Define the /api/sensor-data endpoint for GET requests
 app.get('/api/sensor-data', async (req, res) => {
     const { roomNumber, temperature, humidity, soundLevel, airQuality, comfort } = req.query;
@@ -40,7 +42,7 @@ app.get('/api/sensor-data', async (req, res) => {
         res.status(200).send(`Data received and updated successfully for Room Number ${roomNumber}`);
     } catch (error) {
         console.error('Error updating sensor data:', error);
-        res.status(500).send('Server error while updating sensor data');
+        res.status(500).send(`Server error while updating sensor data ${error}`);
     }
 });
 
