@@ -1,7 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const app = express();
-const port = 3000;
+
+const port = process.env.PORT || 3000;
+const sensorApiUrl = process.env.SENSOR_API_URL;
 
 // Middleware to parse incoming JSON data
 app.use(express.json());
@@ -25,7 +28,7 @@ app.get('/api/sensor-data', async (req, res) => {
 
     try {
         // Make a POST request to update sensor data
-        const response = await axios.post('http://localhost:6005/sensor/edit', {
+        const response = await axios.post(sensorApiUrl, {
             roomNumber,
             temperature,
             humidity,
