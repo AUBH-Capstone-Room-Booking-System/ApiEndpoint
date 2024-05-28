@@ -30,12 +30,12 @@ app.get('/api/sensor-data', async (req, res) => {
 
     try {
         // Make a POST request to update sensor data
-        const response = await axios.post(sensorApiUrl, {
+        const response = await axios.post("http://localhost:6005/sensor/edit", {
             roomNumber,
             temperature,
             humidity,
             airQuality,
-            motion: soundLevel > 50 ? 'Detected' : 'Not Detected'  // Assuming soundLevel > 50 as motion detected
+            motion: soundLevel > 0 ? 'No sound detected' : 'Sound Detected'  // Assuming soundLevel > 50 as motion detected
         });
 
         console.log('Sensor data updated:', response.data);
