@@ -84,7 +84,7 @@ void sendSensorData(float temperature, float humidity, int pirValue) {
     url += temperature;
     url += "&humidity=";
     url += humidity;
-    url += "&pirValue=";
+    url += "&soundLevel=";
     url += pirValue;
     url += "&airQuality=Good&comfort=4";
 
