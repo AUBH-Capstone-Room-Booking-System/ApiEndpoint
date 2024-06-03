@@ -35,7 +35,7 @@ app.get('/api/sensor-data', async (req, res) => {
             temperature,
             humidity,
             airQuality,
-            motion: soundLevel > 0 ? 'No sound detected' : 'Sound Detected'  // Assuming soundLevel > 50 as motion detected
+            motion: soundLevel > 0 ? 'No motion detected' : 'Motion Detected'  // Assuming soundLevel > 50 as motion detected
         });
 
         console.log('Sensor data updated:', response.data);
